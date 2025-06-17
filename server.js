@@ -113,7 +113,7 @@ const webhooks = (function () {
         }
     }
 })();
-const util = require("./lib/util");
+const util = require("util");
 for (let key of ["log", "warn", "info", "spawn", "error"]) {
     const _oldUtilLog = util[key];
     util[key] = function (text, force) {
@@ -122,7 +122,7 @@ for (let key of ["log", "warn", "info", "spawn", "error"]) {
     }
 }
 function loadWASM() {
-    const Module = require("./wasm.js");
+    const Module = require("wasm.js");
     return new Promise((resolve) => {
         let e = setInterval(function() {
             if (Module.ready) {
@@ -156,11 +156,11 @@ global.minifyModules = true;
     }
     webhooks.log("Server initializing!");
     const defsPrefix = "";//process.argv[3] || "";
-    const ran = require("./lib/random");
-    const hshg = require("./lib/hshg");
-    const tokens = require("./tokens.json");
-    const LZString = require("./lib/LZString");
-    const multiboxStore = require("./lib/multiboxStore.js");
+    const ran = require("random");
+    const hshg = require("hshg");
+    const tokens = require("tokens.json");
+    const LZString = require("LZString");
+    const multiboxStore = require("multiboxStore.js");
     global.sandboxRooms = [];
     Array.prototype.remove = index => {
         if (index === this.length - 1) return this.pop();
@@ -170,7 +170,7 @@ global.minifyModules = true;
             return r;
         }
     };
-    global.c = require("./configs/sterilize.js")(`config${serverPrefix}`),
+    global.c = require("configs/sterilize.js")(`config${serverPrefix}`),
         tankList = [];
     c.botPrefix = ((process.env.PORT && process.env.HASH) ? process.env.HASH : "x") + c.botPrefix;
     let rankedRoomTicker = 0, rankedRooms = {};
@@ -676,9 +676,9 @@ global.minifyModules = true;
         }
     }
     const room = new Room(c);
-    //global.corruptedTankLength = require("./tankGenRESULTS.json").length
+    //global.corruptedTankLength = require("tankGenRESULTS.json").length
     global.Class = (() => {
-        let def = require(`./lib/definitions${room.modelMode ? "_basic" : defsPrefix}`),
+        let def = require(`definitions${room.modelMode ? "_basic" : defsPrefix}`),
             i = 0;
         for (let k in def) {
             if (!def.hasOwnProperty(k)) continue;
@@ -7648,9 +7648,9 @@ global.minifyModules = true;
 
             if (process.env.PORT != null) {
                 util.log("Non dev build, we will not attempt to generate mockups.");
-                //mockups = JSON.parse(fs.readFileSync("./public/json/mockups.json", "utf-8"))[1];
+                //mockups = JSON.parse(fs.readFileSync("mockups.json", "utf-8"))[1];
             } else {
-                let hash = require("crypto").createHash('sha256').update(fs.readFileSync('./lib/definitions.js').toString()).digest('base64');
+                let hash = require("crypto").createHash('sha256').update(fs.readFileSync('definitions.js').toString()).digest('base64');
                 let cache = JSON.parse(LZString.decompressFromEncodedURIComponent(fs.readFileSync(loc).toString()));
                 if (start) {
                     if (hash !== cache[0]) {
