@@ -1,8 +1,8 @@
 (async function () {
     const { Worker, isMainThread, parentPort } = require("worker_threads");
-    const fasttalk = require("../lib/fasttalk.js");
+    const fasttalk = require("fasttalk.js");
     function loadWASM() {
-        const Module = require("../wasm.js");
+        const Module = require("wasm.js");
         return new Promise((resolve) => {
             let e = setInterval(function () {
                 if (Module.ready) {
