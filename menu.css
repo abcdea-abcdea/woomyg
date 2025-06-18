@@ -8,7 +8,7 @@
     --backgroundBorderColor: #c1cfd8;
     --menuTextColor: #000000;
     --backgroundBrightness: 0.85;
-    --backgroundLink: url(background_light.svg)
+    --backgroundLink: url(/resources/background_light.svg)
 }
 
 ::-webkit-scrollbar {
@@ -27,7 +27,7 @@
 
 @font-face {
     font-family: coffee;
-    src: url("coffee.ttf") format("opentype");
+    src: url("/resources/coffee.ttf") format("opentype");
 }
 
 .conceal {
