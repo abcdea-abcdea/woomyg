@@ -1,5 +1,5 @@
 function loadWASM() {
-    const Module = require("./wasm.js");
+    const Module = require("wasm.js");
     return new Promise((resolve) => {
         let e = setInterval(function() {
             if (Module.ready) {
