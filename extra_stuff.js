@@ -6295,7 +6295,7 @@ exports.droneDominatorAI = {
     ACCEPTS_SCORE: false
 };*/
 // skillSet()
-/*const c = require('../../../config.json');
+/*const c = require('config.json');
 const skillSet = (() => {
     let skcnv = {
         rld: 0, // Weapon Reload
