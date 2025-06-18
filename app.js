@@ -21,23 +21,23 @@
         const cache = {};
         let i = 0;
         for (let image of [
-            ["../resources/IED.png", "ied"],
-            ["../resources/danksGun.png", "danksGun"],
-            ["../resources/hotwheels.png", "hotWheels"],
-            ["../resources/ned.png", "ned"],
-            ["../resources/omega.png", "omega"],
-            ["../resources/do_not_open_at_any_cost.jpg", "do_not_open_at_any_cost"],
-            ["../resources/speedy.bmp", "speedy"],
-            ["../resources/missingno.bmp", "missingno"],
-            ["../resources/ice_hue.png", "ice_hue"],
-            ["../resources/poison_hue.png", "poison_hue"],
-            ["../resources/emp_hue.png", "emp_hue"],
-            ["../resources/par_hue.png", "par_hue"],
-            ["../resources/YGlitch250.png", "fourFour"],
-            ["../resources/MarbleDecoration.png", "marble_swirl"],
+            ["IED.png", "ied"],
+            ["danksGun.png", "danksGun"],
+            ["hotwheels.png", "hotWheels"],
+            ["ned.png", "ned"],
+            ["omega.png", "omega"],
+            ["do_not_open_at_any_cost.jpg", "do_not_open_at_any_cost"],
+            ["speedy.bmp", "speedy"],
+            ["missingno.bmp", "missingno"],
+            ["ice_hue.png", "ice_hue"],
+            ["poison_hue.png", "poison_hue"],
+            ["emp_hue.png", "emp_hue"],
+            ["par_hue.png", "par_hue"],
+            ["YGlitch250.png", "fourFour"],
+            ["MarbleDecoration.png", "marble_swirl"],
             ["//media.discordapp.net/attachments/843395236537434192/1009290282749153331/yeah.png", "jekyll_badge"],
             ["//media.discordapp.net/attachments/995124277521166356/998978430068605058/magma.png", "fillygroove_badge"],
-            ["../resources/oblivion_badge.png", "oblivion_badge"]
+            ["oblivion_badge.png", "oblivion_badge"]
         ]) {
             setTimeout(() => {
                 const img = new Image();
