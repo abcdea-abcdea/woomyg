@@ -3,7 +3,7 @@ const {
     id,
     oddify,
     setup
-} = require("./maps.js");
+} = require("maps.js");
 
 const teams = (Math.random() * 3 | 0) + 2;
 const mapType = (Math.random() * 4) | 0;
