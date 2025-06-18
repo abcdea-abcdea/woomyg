@@ -1,6 +1,6 @@
 const fs = require('fs');
-global.utility = require("./util.js");
-let Class = require(`./definitions`);
+global.utility = require("util.js");
+let Class = require(`definitions`);
 
 const findXInY = (inX, inY) => {
     let count = 0,
