@@ -37,7 +37,7 @@ if (navigator.userAgent.search("Firefox") !== -1) displayFirefoxSwitch();
 
 //oh my god get blah blah blah blah blah blah blah blah blah balh blahikoswgrikoudejghnudergioujreiunjhgsewikuynjhrsdegikunjhsdrfigkoufhjnsewrikounjhlgfsewrikounjhgfsdikoujgiousdjgw
 
-/*fetch(getFullURL(servers[selectedServer], false) + "achievements.json").then(response => response.json()).then(json => {
+/*fetch(getFullURL(servers[selectedServer], false) + "json/achievements.json").then(response => response.json()).then(json => {
     for (let achievement of json) {
         let holder = document.createElement('div');
         let title = document.createElement("h1");
