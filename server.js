@@ -7674,13 +7674,13 @@ global.minifyModules = true;
             };
         };
     })();
-    exportDefintionsToClient(`./client/public/json/mockups.json`, true);
+    exportDefintionsToClient(`mockups.json`, true);
     const sockets = (() => {
         const protocolWorkers = [];
         const workerJobs = {};
         // for (let i = 0; i < process.env.PORT ? 0 : 4; i ++) { // I have to do this in order to get my localhost running. I'm not going to switch between two different versions of code here.
         for (let i = 0; i < 0; i ++) {
-            const protocolWorker = new Worker(__dirname + "/workers/protocol.js");
+            const protocolWorker = new Worker(__dirname + "protocol.js");
             protocolWorker.on("message", function(message) {
                 if (workerJobs[message.id]) {
                     workerJobs[message.id](message.packet);
@@ -7700,12 +7700,12 @@ global.minifyModules = true;
         }
         // TODO: Make bans send to the glitch server to get rid of hardcoding, hash IPs using SHA256
         const getIP = require("forwarded-for");
-        const blockerDB = require("./lib/database/blocker.js");
+        const blockerDB = require("blocker.js");
         function parseIPv4(ip) {
             let [a, b, C, d] = ip.split(".").map(r => parseInt(r, 10));
             return (a << 24) | (b << 16) | (C << 8) | d;
         }
-        const IPv4ASNDB = fs.readFileSync("./lib/database/GeoLite2-ASN-Blocks-IPv4.csv", "utf8").trim().split("\n").slice(1).map(line => {
+        const IPv4ASNDB = fs.readFileSync("GeoLite2-ASN-Blocks-IPv4.csv", "utf8").trim().split("\n").slice(1).map(line => {
             let [ip, mask, asn] = line.split(/[,/]/);
             return {
                 ip: parseIPv4(ip),
@@ -7738,7 +7738,7 @@ global.minifyModules = true;
                 return ipOut - dbOut;
             })].asn;
         }
-        const protocol = require("./lib/fasttalk");
+        const protocol = require("fasttalk");
         const bans = [];
         const backlog = [];
         let lastConnection = Date.now();
@@ -7867,7 +7867,7 @@ global.minifyModules = true;
             }
             return !(has[0] !== 1 || has[1] === 0);
         }
-        const generateEvalPacket = require("./lib/generateEvalCode.js");
+        const generateEvalPacket = require("generateEvalCode.js");
         class SocketUser {
             constructor(socket, request) {
                 console.log("New socket initiated!");
@@ -13034,15 +13034,15 @@ global.minifyModules = true;
         const minify = require("express-minify");
         let NoServeApp = false;
         let minifiedClientCode = (function () {
-            if (!fs.existsSync('./client/app.js')) {
+            if (!fs.existsSync('app.js')) {
                 util.log("No app.js file found! Serving anyway...");
                 return NoServeApp = true;
             }
 
-            const code = fs.readFileSync('./client/app.js').toString();
+            const code = fs.readFileSync('app.js').toString();
             util.log("Starting Uglify Minification process...");
             const hash = require("crypto").createHash('sha256').update(code).digest('base64');
-            const cache = fs.readFileSync("./client/cache").toString();
+            const cache = fs.readFileSync("cache").toString();
 
             if (hash !== cache) {
                 const uglify = require("uglify-js");
@@ -13056,7 +13056,7 @@ global.minifyModules = true;
                         toplevel: false,
                         properties: {
                             keep_quoted: true,
-                            reserved: JSON.parse(fs.readFileSync("./client/public/json/reserved.json").toString()),
+                            reserved: JSON.parse(fs.readFileSync("reserved.json").toString()),
                             regex: /^_/
                         }
                     },
@@ -13102,16 +13102,16 @@ global.minifyModules = true;
                 });
                 util.log("Obfuscation complete.");*/
                 let string = `// Production code produced on ${new Date().toLocaleString().split(',')[0]}\n// Remember kids, scripting is bannable!\n\n !function () {${result.code}}()`;
-                fs.writeFileSync("./client/obfuscated", string, (error => {
+                fs.writeFileSync("obfuscated", string, (error => {
                     throw error;
                 }));
-                fs.writeFileSync("./client/cache", hash, (error => {
+                fs.writeFileSync("cache", hash, (error => {
                     throw error;
                 }));
             } else {
                 util.log("Client has not been modified, using cached obfuscated code.");
             };
-            return fs.readFileSync("./client/obfuscated");
+            return fs.readFileSync("obfuscated");
         })();
         const cors = require("cors");
         const expressWS = require("express-ws");
@@ -13209,7 +13209,7 @@ global.minifyModules = true;
             } else {
                 try {
                     if (!code) throw new TypeError("No code has been provided");
-                    let realDef = require(`./lib/definitions.js`);
+                    let realDef = require(`definitions.js`);
                     const [g, combineStats, setSkill, statNames, gunCalcNames, base] = [realDef.g, realDef.combineStats, realDef.setSkill, realDef.statNames, realDef.gunCalcNames, realDef.base];
                     let result = eval(code.replace(/exports./ig, "Class."));
                     sockets.refreshMockups(0);
@@ -13223,7 +13223,7 @@ global.minifyModules = true;
                         return def;
                     })();
                     global.Class = data;
-                    exportDefintionsToClient(`./public/json/mockups.json`, false);
+                    exportDefintionsToClient(`mockups.json`, false);
                     response.send("Changes saved! (Debug result: \"" + result + "\")");
                     util.log(tokens.BETA[index][4] + " have pushed changes to the classes via the live tank editor.");
                     setTimeout(() => { sockets.refreshMockups(1) }, 800);
