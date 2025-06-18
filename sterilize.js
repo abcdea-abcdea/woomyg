@@ -1,4 +1,4 @@
-let baseConfig = require("./config.json");
+let baseConfig = require("config.json");
 module.exports = file => {
     try {
         let data = require("./" + file);
