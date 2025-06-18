@@ -1,3 +1,3 @@
 const fs = require('fs');
-global.utility = require("./lib/util.js");
-let Class = require(`./lib/definitions`);
+global.utility = require("util.js");
+let Class = require(`definitions`);
