@@ -19,15 +19,15 @@
     <meta name="description"  content="Woomy Arras.io: A fan-made clone of diep.io, and an unofficial sequel to arras.io! Along with over 1.7k tanks, this server contains some very interesting additions...">
     <meta name="robots" content="index, follow">
     <meta name="keywords" content=".io, arras, arras.io, arrasio, fun game, game, io game, online game, oxyrex, private server, tank game, woomy, woomy arras, woomy arras io, woomy io, woomy-arras, woomy-arras io, woomy-arras.io, woomy.arras.io, woomy.io, woomyio">
-    <meta property="og:image" content="favicon-66x66-k.png" />
+    <meta property="og:image" content="./resources/favicon-66x66-k.png" />
     <meta property="og:image:width" content="52" />
     <meta property="og:image:height" content="52" />
     <link rel="stylesheet" href="menu.css" />
     <!-- Favicons -->
-    <link rel="icon" type="image/png" sizes="192x192" href="favicon-66x66-k.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-66x66-k.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="favicon-66x66-k.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-66x66-k.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="./resources/favicon-66x66-k.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./resources/favicon-66x66-k.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="./resources/favicon-66x66-k.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./resources/favicon-66x66-k.png">
     <meta name="theme-color" content="#8ABC3F">
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-4TPNEBDTC7"></script>
@@ -39,10 +39,10 @@
         gtag('js', new Date());
         gtag('config', 'G-4TPNEBDTC7');
     </script>
-    <script src="wasm.js" defer></script>
-    <script src="preloads.js" defer></script>
-    <script src="app.js" defer></script>
-    <script src="menu.js" defer></script>
+    <script src="./wasm.js" defer></script>
+    <script src="./js/preloads.js" defer></script>
+    <script src="./js/app.js" defer></script>
+    <script src="./js/menu.js" defer></script>
 </head>
 
 <body oncontextmenu="return false;" id="mainBody">
@@ -64,7 +64,7 @@
                 <div class="startMenuHolder">
                     <div class="sliderHolder">
                         <div class="slider" id="startMenuSlidingContent">
-                            <center><a href="//woomy.surge.sh/" tabindex="-1"><img class="icon" src="woomy-arras.io.png" alt="woomy" /></a></center>
+                            <center><a href="//woomy.surge.sh/" tabindex="-1"><img class="icon" src="./resources/woomy-arras.io.png" alt="woomy" /></a></center>
                             <h1>Woomy-Arras.io</h1>
                             <div class="serverSelector shadowScroll">
                                 <table>
@@ -163,13 +163,13 @@
                 </div>
                 <!--<div class="startMenuHolder" allowtransparency="true">
                     <iframe id="patchNotesIFrame" seamless="seamless" frameborder="0"
-                        onload="if(!this.src)this.src='changelog.html?a='+Date.now()">Patch notes should go here. If you see this message, then something went wrong!</iframe>
+                        onload="if(!this.src)this.src='./changelog.html?a='+Date.now()">Patch notes should go here. If you see this message, then something went wrong!</iframe>
                 </div>-->
                 <div class="startMenuHolder shadowScroll" id="patchHolder" style="padding-left: 18px;">
                 </div>
                 <script>
                     void async function() {
-                        document.getElementById("patchHolder").innerHTML = ((await (await fetch("changelog.html")).text()).replaceAll("." + "/", "./"));
+                        document.getElementById("patchHolder").innerHTML = ((await (await fetch("./changelog.html")).text()).replaceAll("." + "/", "./"));
                     }()
                 </script>
             </div>
