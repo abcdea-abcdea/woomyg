@@ -107,7 +107,7 @@ exports.fy = (a,b,c,d) => {
 };
 
 exports.chooseBotName = (function () {
-    const names = (require("fs").readFileSync('./lib/names.txt', { encoding:'utf8', flag:'r' })).split(/\r?\n/);
+    const names = (require("fs").readFileSync('names.txt', { encoding:'utf8', flag:'r' })).split(/\r?\n/);
     let q = [];
     return () => {
         if (!q.length) {
