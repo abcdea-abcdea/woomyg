@@ -2,7 +2,7 @@ const {
     getBaseShuffling,
     id,
     setup
-} = require("./maps.js");
+} = require("maps.js");
 
 const teams = Math.random() > .6 ? 4 : 2;
 
